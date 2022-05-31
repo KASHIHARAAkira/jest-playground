@@ -1,17 +1,26 @@
 import OperateMariadb from "../lib/operate_mariadb";
-const operateMariadb = new OperateMariadb();
 
-afterAll(() => {
-  if (operateMariadb.connection) {
-    operateMariadb.connection.end();
-  }
-  operateMariadb.poolEnd();
-});
+// afterAll(() => {
+//   if (operateMariadb.connection) {
+//     operateMariadb.connection.end();
+//   }
+//   operateMariadb.poolEnd();
+// });
+
+// describe("Interface testing.", () => {
+//   it("Expected running.", async () => {
+//     await operateMariadb.getConnection();
+//     expect(operateMariadb.connection).not.toBeUndefined();
+//   });
+// });
 
 describe("Interface testing.", () => {
   it("Expected running.", async () => {
+    const operateMariadb = new OperateMariadb();
     await operateMariadb.getConnection();
     expect(operateMariadb.connection).not.toBeUndefined();
+    await operateMariadb.disconnection();
+    operateMariadb.poolEnd();
   });
 });
 
