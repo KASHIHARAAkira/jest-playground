@@ -2,6 +2,9 @@ import OperateMariadb from "../lib/operate_mariadb";
 const operateMariadb = new OperateMariadb();
 
 afterAll(() => {
+  if (operateMariadb.connection) {
+    operateMariadb.connection.end();
+  }
   operateMariadb.poolEnd();
 });
 
