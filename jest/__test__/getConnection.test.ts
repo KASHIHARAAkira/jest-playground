@@ -22,7 +22,6 @@ describe("Error handling testing.", () => {
     expect(operateMariadb.getConnection()).rejects.toThrow(
       "Connection failed."
     );
-    // await operateMariadb.disconnection();
     operateMariadb.poolEnd();
   });
 });
